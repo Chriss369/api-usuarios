@@ -1,0 +1,128 @@
+{
+  "info": {
+    "name": "API Usuarios",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Registrar usuario (POST)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/usuarios",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Ana Torres\",\n  \"correo\": \"ana@mail.com\",\n  \"edad\": 21\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "2. Consultar todos (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:3000/usuarios"
+      }
+    },
+    {
+      "name": "3. Consultar por ID (GET)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:3000/usuarios/1"
+      }
+    },
+    {
+      "name": "4. Actualizar usuario (PUT)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/usuarios/1",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Carlos Pérez Actualizado\",\n  \"correo\": \"carlos@mail.com\",\n  \"edad\": 23\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "5. Eliminar usuario (DELETE)",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "http://localhost:3000/usuarios/2"
+      }
+    },
+    {
+      "name": "Error 400 - Falta correo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/usuarios",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Luis\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Error 409 - Correo repetido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "http://localhost:3000/usuarios",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Otro Usuario\",\n  \"correo\": \"carlos@mail.com\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Error 404 - ID inexistente",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "http://localhost:3000/usuarios/999"
+      }
+    }
+  ]
+}
